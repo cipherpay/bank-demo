@@ -16,7 +16,7 @@
 	$balance = str_replace(",", "", $_POST['balance']);
 
 	if ($cust_id) {
-		$sql = "INSERT INTO accounts VALUES(NULL, $balance);";
+		$sql = "INSERT INTO accounts VALUES(NULL, $balance, NULL, 1);";
 
 		if ($db !== "CONNECT_FAIL")
 			$result = db_query($db, $sql);

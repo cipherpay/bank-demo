@@ -111,3 +111,15 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `bank`.`account_type`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bank`;
+INSERT INTO `bank`.`account_type` (`type_id`, `type_name`, `min_balance`) VALUES (1, 'CHECKING', -200.0);
+INSERT INTO `bank`.`account_type` (`type_id`, `type_name`, `min_balance`) VALUES (2, 'SAVINGS', 0.0);
+INSERT INTO `bank`.`account_type` (`type_id`, `type_name`, `min_balance`) VALUES (3, 'CREDIT', 0.0);
+INSERT INTO `bank`.`account_type` (`type_id`, `type_name`, `min_balance`) VALUES (4, 'LOAN', 0.0);
+
+COMMIT;

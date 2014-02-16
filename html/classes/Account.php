@@ -6,6 +6,8 @@
 		private $db;
 		public $id;
 		public $balance;
+		public $type;
+		public $min_balance;
 		public $customers = array();
 
 		public function __construct($db, $id) {
@@ -23,11 +25,13 @@
 		private function load() {
 			try {
 				// Get and save account data to object
-				$sql = "SELECT * FROM accounts WHERE account_id = $this->id;";
+				$sql = "SELECT * FROM accounts JOIN account_type USING type_id WHERE account_id = $this->id;";
 				$result = $this->db->query($sql);
 				if ($result && $result->num_rows == 1) {
 					$row = $result->fetch_assoc();
 					$this->balance = $row['balance'];
+					$this->type = $row['type_name'];
+					$this->min_balance = $row['min_balance'];
 				}
 
 				// Get and save customer_id list
@@ -67,9 +71,10 @@
 		}
 
 		// Static function to add new account
-		// Account::add(database, customer_id, balance, permission)
-		public static function add($db, $customer_id, $balance = 0.00, $permission = "primary") {
-
+		// Account::add(database, balance, account type, account name)
+		public static function add($db, $balance = 0.00, $type = 1, $name) {
+			$sql = "INSERT INTO accounts VALUES(NULL, $balance, $type, '$name');";
+			// ...
 		}
 
 		// Static function to list all accounts
