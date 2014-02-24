@@ -23,7 +23,7 @@
 	 * 'add_account' - adds a bank account
 	 * 'del_account' - removes an account
 	 */
-	$api = $_REQUEST['API'];
+	$api = $_REQUEST['api'];
 
 	switch ($api) {
 		case 'add':
@@ -68,7 +68,7 @@
 			break;
 		case 'get':
 			// Get form parameters and escape
-			$id= $db->real_escape_string($_GET['customer_id']);
+			$id = $db->real_escape_string($_GET['customer_id']);
 
 			// Get customer information
 			$cust = new Customer($db, $id);
@@ -136,7 +136,7 @@
 
 			// Unlink the account
 			$cust = new Customer($db, $customer_id);
-			$success = $cust->removeAccount($account_id, $permission);
+			$success = $cust->removeAccount($account_id);
 
 			// Return results
 			if ($success) {

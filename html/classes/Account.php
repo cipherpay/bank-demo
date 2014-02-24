@@ -25,7 +25,7 @@
 		private function load() {
 			try {
 				// Get and save account data to object
-				$sql = "SELECT * FROM accounts JOIN account_type USING type_id WHERE account_id = $this->id;";
+				$sql = "SELECT * FROM accounts JOIN account_type USING (type_id) WHERE account_id = $this->id;";
 				$result = $this->db->query($sql);
 				if ($result && $result->num_rows == 1) {
 					$row = $result->fetch_assoc();
