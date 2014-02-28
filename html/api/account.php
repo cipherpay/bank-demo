@@ -120,9 +120,32 @@
 			}
 			break;
 		case 'list':
-		//////////////////// HERE //////////////
+			// Get parameters
+			$get_customer_details = $_GET['list_customers'];
+
 			// Get list of accounts
-			$accounts = Account::listAll($db);
+			$temp_accounts = Account::listAll($db);
+
+			if ($get_customer_details) {
+				$accounts = array();
+				for ($i = 0; $i < count($temp_accounts); $i++) {
+					$acct = new Account($db, $temp_accounts[$i]['account_id']);
+					$customers = array();
+					for ($j = 0; $j < count($acct->customers); $j++) {
+						$cust = new Customer($db, $acct->customers[$j]);
+						$customer = array(
+							'customer_id' => $cust->id,
+							'f_name' => $cust->f_name,
+							'm_name' => $cust->m_name,
+							'l_name' => $cust->l_name
+						);
+						array_push($customers, $customer);
+					}
+					array_push($accounts, array_merge($temp_accounts[$i], array('customers' => $customers)));
+				}
+			} else {
+				$accounts = $temp_accounts;
+			}
 
 			// Return results
 			if ($accounts) {

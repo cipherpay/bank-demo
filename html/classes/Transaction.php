@@ -10,9 +10,15 @@
 		public $status = "pending";
 		public $statusCode = "UNKN";
 
-		public function __construct($db, $type, $amount) {
+		public function __construct($db, $type, $amount, $acct_a, $acc_b = NULL) {
 
 		}
+
+		public function withdraw($account, $amount) {
+
+		}
+
+		public function 
 
 		public static function listByAcc($id, $start, $end) {
 

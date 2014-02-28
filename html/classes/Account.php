@@ -116,7 +116,7 @@
 		// Static function to list all accounts
 		// Account::listAll(database)
 		public static function listAll($db) {
-			$sql = "SELECT * FROM accounts;";
+			$sql = "SELECT * FROM accounts JOIN account_type USING (type_id);";
 			$result = $db->query($sql);
 			$results = array();
 			while($row = $result->fetch_assoc())
