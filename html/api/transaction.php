@@ -121,8 +121,6 @@
 			} else {
 				$response = array('status' => 'ERROR');
 			}
-			echo json_encode($transactions);
-			echo "<br>";
 			echo json_encode($response);
 			break;
 		default: 
