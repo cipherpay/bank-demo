@@ -1,7 +1,6 @@
 <?php
 	// Load database configuration
 	require '../config.php';
-	require '../classes/Account.php';
 	require '../classes/Transaction.php';
 
 	$db = new mysqli($host, $user, $password, $database);
@@ -20,6 +19,7 @@
 	 * 'credit' - add funds to an account balance
 	 * 'debit' - removes funds from an account
 	 * 'transfer' - transfer funds between two accounts
+	 * 'get' - get transaction details for a single transaction
 	 * 'list' - lists all account transactions
 	 */
 	$type = $_REQUEST['type'];
