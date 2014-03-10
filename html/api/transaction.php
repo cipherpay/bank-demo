@@ -29,10 +29,10 @@
 			// Get form parameters and escape
 			$amount = $db->real_escape_string($_POST['amount']);
 			$institution = $db->real_escape_string($_POST['institution']);
-			$account = $db->real_escape_string($_POST['account']);
+			$account_id = $db->real_escape_string($_POST['account_id']);
 
 			// Execute transaction
-			$transaction = new Transaction($db, 'credit', $amount, $institution, $account);
+			$transaction = new Transaction($db, 'credit', $amount, $institution, $account_id);
 
 			// Return results in JSON format
 			if ($transaction->status == 'commit') {
@@ -50,10 +50,10 @@
 			// Get form parameters and escape
 			$amount = $db->real_escape_string($_POST['amount']);
 			$institution = $db->real_escape_string($_POST['institution']);
-			$account = $db->real_escape_string($_POST['account']);
+			$account_id = $db->real_escape_string($_POST['account_id']);
 
 			// Execute transaction
-			$transaction = new Transaction($db, 'debit', $amount, $institution, $account);
+			$transaction = new Transaction($db, 'debit', $amount, $institution, $account_id);
 
 			// Return results in JSON format
 			if ($transaction->status == 'commit') {
