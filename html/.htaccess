@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Transaction API
+RewriteRule ^api/trans/get/([0-9]+) api/transaction.php?type=get&transaction_id=$1 [NC,L]
+RewriteRule ^api/trans/list/([0-9]+) api/transaction.php?type=list&account_id=$1 [NC,L]
+RewriteRule ^api/trans/credit api/transaction.php?type=credit [NC,L]
+RewriteRule ^api/trans/debit api/transaction.php?type=debit [NC,L]
+RewriteRule ^api/trans/transfer api/transaction.php?type=transfer [NC,L]
+
+# Account API
+
+
+# Customer API
