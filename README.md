@@ -6,7 +6,7 @@ A Virtual Bank Web Application For Financial Systems Demonstrations
 Written in PHP
 
 ## Folder Organization
-# Contents of folders in this project
+### Contents of folders in this project
 
 * /html - Contains all PHP, HTML, JavaScript and CSS code for the web application
 * /html/api - Holds the PHP RESTful API code
@@ -19,11 +19,11 @@ Written in PHP
 
 ## RESTful API
 
-# Customer API
+### Customer API
 
-# Account API
+### Account API
 
-# Transaction API
+### Transaction API
 
 
 
