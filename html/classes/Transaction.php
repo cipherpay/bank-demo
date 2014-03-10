@@ -19,7 +19,6 @@
 			$this->amount = $amount;
 			$this->institution = $institution;
 
-
 			// Begin InnoDB transaction
 			$this->db->autocommit(FALSE);
 
@@ -83,7 +82,7 @@
 					}
 					break;
 				case 'transfer':
-					if ($this->transfer($account, $account2) {
+					if ($this->transfer($account, $account2)) {
 						// Commit database update
 						$this->db->commit();
 
@@ -181,15 +180,24 @@
 			}
 		}
 
-		public static function listByAcc($db, $id, $start, $end) {
-			if ($start & $end) {
-				$sql = "SELECT * FROM transactions WHERE account_id = $id AND datetime > $start AND datetime < $end;";
+		public static function get($db, $transaction_id) {
+			$sql = "SELECT * FROM transactions WHERE transaction_id = $transaction_id;";
+			$result = $db->query($sql);
+			if ($result)
+				return $result->fetch_assoc();
+			else
+				return false;
+		}
+
+		public static function listByAcc($db, $account_id, $start, $end) {
+			if ($start && $end) {
+				$sql = "SELECT * FROM transactions WHERE account_id = $account_id AND datetime > $start AND datetime < $end;";
 			} else if ($start) {
-				$sql = "SELECT * FROM transactions WHERE account_id = $id AND datetime > $start;";
+				$sql = "SELECT * FROM transactions WHERE account_id = $account_id AND datetime > $start;";
 			} else if ($end) {
-				$sql = "SELECT * FROM transactions WHERE account_id = $id AND datetime < $end;";
+				$sql = "SELECT * FROM transactions WHERE account_id = $account_id AND datetime < $end;";
 			} else {
-				$sql = "SELECT * FROM transactions WHERE account_id = $id;";
+				$sql = "SELECT * FROM transactions WHERE account_id = $account_id;";
 			}
 
 			$result = $db->query($sql);
