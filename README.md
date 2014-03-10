@@ -67,3 +67,33 @@ API Response (**JSON**)
 }
 ```
 
+#### Debit
+
+API Format
+```
+method = POST
+/api/trans/debit
+```
+
+API Parameters
+```javascript
+'amount' = The amount in decimal USD to be deducted (e.g. 12.99)
+'institution' = The name of the party acquiring the funds (e.g. "Cool Store")
+'account_id' = The account_id of the account to be debited
+```
+
+API Response (**JSON**)
+```json
+# success
+{
+  "status" : "SUCCESS",
+  "transaction_id": 0123456789
+}
+
+# error
+{
+  "status": "ERROR",
+  "message": "Relevant error messsage"
+}
+```
+
