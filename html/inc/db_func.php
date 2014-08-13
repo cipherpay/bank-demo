@@ -1,27 +1,43 @@
 <?php
+	/*
+	 * Connect to MySQL Database
+	 * Uses PDO. Configuration in '/inc/config.php'
+	 */
 	function db_connect() {
-		// Load database configuration file
-		include 'config.php';
+		// First load configuration file
+		define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/");
+		require_once ROOT."inc/config.php";
 		
-		$db = new mysqli($host, $user, $password, $database);
-
-		if ($db->connect_errno > 0)
+		try {
+			$db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
+			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$db->exec("SET NAMES 'utf8'");
+		} catch (Exception $e) {
 			return "CONNECT_FAIL";
-		else
-			return $db;
+		}
+		
+		return $db;
 	}
 
+	/* 
+	 * Function to run prepared SQL.
+	 * May become deprecated with move to PDO
+	 */
 	function db_query($db, $sql) {
-		$result = $db->query($sql);
-
-		if (!$result)
+		try {
+			$result = $db->query($sql);
+		} catch (Exception $e) {
 			return "QUERY_FAIL";
-		else
-			return $result;
+		}
+		
+		return $result;
 	}
 
+	/* 
+	 * Close PDO database connection.
+	 */
 	function db_close($db) {
-		$db->close();
+		$db = NULL; // For PDO, set to NULL
 	}
 
 ?>

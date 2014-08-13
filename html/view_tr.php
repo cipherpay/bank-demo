@@ -1,6 +1,6 @@
 <?php
 	require 'header-footer.php';
-	require 'db_func.php';
+	require 'inc/db_func.php';
 
 	head('view_tr.php', 'View Transactions');
 
@@ -99,7 +99,7 @@
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th>Date & Time</th>
+							<th>Date &amp; Time</th>
 							<th>Merchant</th>
 							<th>Trans. Details</th>
 							<th>Amount</th>
