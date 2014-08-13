@@ -1,0 +1,12 @@
+<?php
+
+// Define the server's root path
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/");
+
+// Database access credentials
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASSWORD", "password");
+define("DB_NAME", "bank");
+
+?>
