@@ -2,8 +2,6 @@
 	require 'header-footer.php';
 	require 'db_func.php';
 
-	head('run_tr.php', 'Run Transaction');
-
 	$server_response = "<p>Waiting for form submit...</p>";
 
 	setlocale(LC_MONETARY, 'en_US.utf8');

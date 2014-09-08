@@ -2,8 +2,6 @@
 	require 'header-footer.php';
 	require 'db_func.php';
 
-	head('add_cust.php', 'Add Customer Form');
-
 	$server_response = "<p>Waiting for form submit...</p> ";
 
 	if ($_POST['f_name'] && $_POST['l_name']) {

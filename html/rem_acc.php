@@ -1,7 +1,6 @@
 <?php
 	require 'header-footer.php';
 	require 'db_func.php';
-	head('rem_acc.php', 'Remove Account Form');
 
 	$server_response = "<p>Waiting for form submit...</p>";
 

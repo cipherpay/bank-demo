@@ -1,13 +1,14 @@
 <?php
+	// Database function requirements
+	if (!defined("ROOT"))
+		define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/");
+	require_once ROOT."inc/config.php";
+	
 	/*
 	 * Connect to MySQL Database
 	 * Uses PDO. Configuration in '/inc/config.php'
 	 */
 	function db_connect() {
-		// First load configuration file
-		define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/");
-		require_once ROOT."inc/config.php";
-		
 		try {
 			$db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

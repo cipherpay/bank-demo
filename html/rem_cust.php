@@ -2,8 +2,6 @@
 	require 'header-footer.php';
 	require 'db_func.php';
 
-	head('rem_cust.php', 'Remove Customer Form');
-
 	$server_response = "<p>Waiting for form submit...</p>";
 
 	// Start DB connections
